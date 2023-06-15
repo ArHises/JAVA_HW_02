@@ -9,13 +9,16 @@ public class TaskFour {
     public static void main(String[] args) {
 //        4) К калькулятору из предыдущего ДЗ добавить логирование.
 
+        calcOptions();
+
+    }
+    public static void logInfo(String information){
         Logger log = Logger.getLogger(TaskFour.class.getName());
         ConsoleHandler ch = new ConsoleHandler();
         SimpleFormatter sFormat = new SimpleFormatter();
         ch.setFormatter(sFormat);
         log.addHandler(ch);
-        calcOptions(log);
-
+        log.info(information);
     }
 
     private static void CalcInterface() {
@@ -27,19 +30,19 @@ public class TaskFour {
 
     }
 
-    private static void calcOptions(Logger log) {
+    private static void calcOptions() {
         Scanner iScanner = new Scanner(System.in);
         CalcInterface();
         String task = iScanner.nextLine();
         while (!task.equals("5")) {
             if (task.equals("1")) {
-                plus(log);
+                plus();
             } else if (task.equals("2")) {
-                minus(log);
+                minus();
             } else if (task.equals("3")) {
-                multiply(log);
+                multiply();
             } else if (task.equals("4")) {
-                divide(log);
+                divide();
             } else {
                 System.out.println("Try again");
                 CalcInterface();
@@ -49,36 +52,36 @@ public class TaskFour {
         }
     }
 
-    public static void plus(Logger log){
+    public static void plus(){
         Scanner iScanner = new Scanner(System.in);
         System.out.println("Enter two numbers: ");
         int one = Integer.parseInt(iScanner.nextLine());
         int two = Integer.parseInt(iScanner.nextLine());
-        log.info(one + " + " + two + " = " + (one+two));
+        logInfo(one + " + " + two + " = " + (one+two));
         System.out.println(one + " + " + two + " = " + (one+two));
     }
-    public static void minus(Logger log){
+    public static void minus(){
         Scanner iScanner = new Scanner(System.in);
         System.out.println("Enter two numbers: ");
         int one = Integer.parseInt(iScanner.nextLine());
         int two = Integer.parseInt(iScanner.nextLine());
-        log.info(one + " - " + two + " = " + (one-two));
+        logInfo(one + " - " + two + " = " + (one-two));
         System.out.println(one + " - " + two + " = " + (one-two));
     }
-    public static void multiply(Logger log){
+    public static void multiply(){
         Scanner iScanner = new Scanner(System.in);
         System.out.println("Enter two numbers: ");
         int one = Integer.parseInt(iScanner.nextLine());
         int two = Integer.parseInt(iScanner.nextLine());
-        log.info(one + " * " + two + " = " + (one * two));
+        logInfo(one + " * " + two + " = " + (one * two));
         System.out.println(one + " * " + two + " = " + (one * two));
     }
-    public static void divide(Logger log){
+    public static void divide(){
         Scanner iScanner = new Scanner(System.in);
         System.out.println("Enter two numbers: ");
         double one = Double.parseDouble(iScanner.nextLine());
         double two = Double.parseDouble(iScanner.nextLine());
-        log.info(one + " / " + two + " = " + (one/two));
+        logInfo(one + " / " + two + " = " + (one/two));
         System.out.println(one + " / " + two + " = " + (one/two));
     }
 }
